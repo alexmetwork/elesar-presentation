@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8fb">
+<title>Хатанга - три взгляда v3.2</title>
+<style>
+:root{font-family:"Segoe UI",Arial,sans-serif;color:#28354a;background:#f7f8fb;--line:#e3e7ee;--text:#2c3850;--muted:#8390a3;--purple:#6158b1;--green:#3a8266;--gold:#a27030;--red:#b65356}*{box-sizing:border-box}body{margin:0;font-size:13px;line-height:1.5}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid #8578d9;outline-offset:2px}button:disabled{opacity:.5;cursor:default}a{text-decoration:none;color:inherit}
+.layout{min-height:100vh;display:grid;grid-template-columns:224px minmax(0,1fr)}aside{background:#fff;border-right:1px solid var(--line);padding:24px 14px;display:flex;flex-direction:column;gap:28px;position:sticky;top:0;height:100vh}.brand{display:flex;gap:10px;align-items:center;border-radius:9px;padding:5px 10px}.brand:hover{background:#f6f5fb}.mark{background:#6159b1;color:#fff;font-size:20px;border-radius:11px;width:36px;height:36px;display:grid;place-items:center;font-weight:750}.brandname{font-size:16px;font-weight:750}.brandsub{font-size:9px;letter-spacing:1.1px;color:#98a3b2;text-transform:uppercase}
+.navtitle{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#a4adbb;padding:0 12px 10px}.nav{display:grid;gap:4px}.nav button{width:100%;background:transparent;border:0;border-radius:8px;padding:11px 12px;text-align:left;color:#69778c;font-size:12px}.nav button:hover{background:#f6f7fa}.nav button.active{background:#f0eefb;color:#5e56ab;font-weight:650}.nav .navicon{font-size:16px;display:inline-block;width:26px}.sidefooter{margin-top:auto;border-top:1px solid var(--line);padding:16px 10px 0;font-size:10px;line-height:1.7;color:#9ba5b4}
+main{min-width:0}.topbar{height:60px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 35px;gap:12px;font-size:11px;color:#9aa5b4}.content{padding:32px 36px 62px;max-width:1320px;margin:auto}.pagehead{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:23px}.eyebrow{font-size:10px;font-weight:650;letter-spacing:1px;text-transform:uppercase;color:#99a4b5;margin-bottom:7px}h1{font-size:28px;letter-spacing:-.8px;margin:0;line-height:1.25}h2{font-size:14px;margin:0;font-weight:700}h3{font-size:12px;margin:0;font-weight:700}.subtitle{font-size:12px;color:#8896a7;margin:9px 0 0;max-width:680px}
+.roles{display:flex;gap:7px;flex-wrap:wrap}.role{min-width:105px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 12px;text-align:left;color:#6f7c8f}.role b{display:block;font-size:12px}.role small{font-size:10px;color:#a3adba}.role.active{background:#f0effa;border-color:#b7b0e2;color:#5d54a6}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}.pad{padding:21px}.section{margin:0 0 22px}.sectionhead{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:12px}.sectionhead p{font-size:11px;color:#8b97a9;margin:5px 0 0}.two{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr);gap:20px}.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:23px}.stat{padding:18px;background:#fff;border:1px solid var(--line);border-radius:11px}.stat small{color:#8390a2;font-size:11px}.stat strong{font-size:29px;display:block;margin:8px 0 2px;letter-spacing:-.7px}.stat em{font-style:normal;color:#a0aaba;font-size:10px}
+.btn{background:#fff;border:1px solid #dce1e9;border-radius:8px;padding:9px 12px;font-weight:600;font-size:11px;color:#53617b}.btn:hover{background:#f8f9fc;border-color:#bfc8d6}.btn.primary{background:#6259b1;color:#fff;border-color:#6259b1}.btn.primary:hover{background:#5249a2}.btn.small{font-size:10px;padding:7px 10px}.btn.warn{color:#ab5d52}.buttons{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:15px}.tag{display:inline-flex;font-size:10px;font-weight:600;line-height:1.4;padding:4px 8px;border-radius:7px;background:#f0f2f5;color:#6f7b8d}.tag.warn{background:#fdf1e0;color:#a06b2b}.tag.red{background:#f9e8e9;color:#af4e52}.tag.green{background:#e8f5ec;color:#3b8063}.tag.purple{background:#f0eefa;color:#6259ae}
+.note{background:#fbfaff;border:1px solid #e9e5f5;border-radius:10px;color:#756e94;padding:13px 16px;font-size:11px;line-height:1.7;margin-bottom:21px}.card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px 20px;margin-bottom:10px}.card.soft{background:#fbfaff;border-color:#e6e3f2}.card.green{background:#f8fcf9;border-color:#e0eee4}.cardhead{display:flex;align-items:center;justify-content:space-between;gap:10px}.card h3{font-size:13px}.card p{font-size:11px;color:#728198;line-height:1.7;white-space:pre-wrap;margin:8px 0 0}.line{height:1px;background:#eef0f4;margin:17px 0}.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:17px}.factlabel{font-size:10px;color:#929dad}.factvalue{font-size:12px;color:#39465d;font-weight:650;margin-top:4px}
+.tablehead,.tablerow{display:grid;grid-template-columns:1.12fr 1.1fr 1fr .72fr;gap:13px;padding:17px 18px;border-bottom:1px solid #ecf0f4}.tablehead{font-size:10px;font-weight:620;color:#99a4b2;background:#fafbfd;padding-top:11px;padding-bottom:11px}.tablerow:last-child{border-bottom:0}.tabletitle{font-weight:660;font-size:12px}.tablesub{color:#8c99ab;font-size:11px;margin-top:4px;line-height:1.6}.tableval{font-size:11px;color:#516079;line-height:1.6}.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:17px}.step>div{background:#e6eaf0;border-radius:6px;height:7px}.step.done>div{background:#94c7b5}.step.current>div{background:#8e84d4}.step small{display:block;font-size:10px;color:#96a2b2;margin-top:8px;line-height:1.45}.step.current small{font-weight:700;color:#665baa}
+.form{display:grid;gap:13px;margin-top:14px}.field{display:grid;gap:6px}.field label{font-size:11px;color:#58667e;font-weight:620}.field input,.field textarea{border-radius:8px;border:1px solid #dce2eb;color:#3a485f;padding:10px 11px;font-size:12px;background:#fff;width:100%;outline:0}.field textarea{min-height:84px;resize:vertical}.field input:focus,.field textarea:focus{border-color:#9d91dd;box-shadow:0 0 0 3px #f3f1fb}.hint{font-size:10px;color:#8e9bac;line-height:1.55}.empty{padding:22px;color:#8a98aa;font-size:12px}
+.record{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid #edf0f4}.record:last-child{border:0}.recorddate{min-width:104px;color:#9ca6b5;font-size:10px}.recordtext{font-size:11px;color:#48576e}.recordtext strong{display:block;margin-bottom:6px}.recordtext p{font-size:11px;white-space:pre-wrap;color:#79879a;margin:0;overflow-wrap:anywhere;line-height:1.65}.recordtext small{display:block;margin-top:6px;color:#a4adbc}.mail{padding:16px 18px;border-bottom:1px solid #edf0f5}.mail:last-child{border:0}.mailhead{display:flex;gap:12px;justify-content:space-between}.mail p{font-size:11px;color:#7c899b;white-space:pre-wrap;line-height:1.7}.mail small{font-size:10px;color:#a4adba}.toast{position:fixed;right:20px;bottom:20px;color:#fff;background:#2e3951;border-radius:8px;padding:12px 16px;font-size:12px;opacity:0;transition:opacity .2s;pointer-events:none}.toast.show{opacity:1}
+@media(max-width:1200px){.two{grid-template-columns:1fr}.tablehead,.tablerow{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:830px){.layout{display:block}aside{position:static;height:auto;gap:12px;padding:12px 15px}.nav{display:flex;flex-wrap:wrap}.nav button{width:auto}.navtitle,.sidefooter{display:none}.topbar{height:45px;padding:0 19px}.content{padding:24px 18px 55px}.pagehead{flex-direction:column}}@media(max-width:510px){.roles{width:100%}.role{min-width:0;flex:1}.cols{grid-template-columns:1fr}.tablehead{display:none}.tablerow{grid-template-columns:1fr}.record{flex-direction:column;gap:5px}.stat{padding:13px}.stat strong{font-size:25px}}
+</style>
+</head><body>
+<div class="layout"><aside><a class="brand" href="./" aria-label="Хатанга - главная"><span class="mark">Х</span><span><div class="brandname">Хатанга</div><div class="brandsub">Project Hub / v3.2</div></span></a><div><div class="navtitle">Рабочее пространство</div><nav id="nav" class="nav"></nav></div><div class="sidefooter">v3.2 - демонстрация трёх взглядов. Данные локальные, email не отправляется. Авторизации пока нет.</div></aside>
+<main><header class="topbar"><span id="crumb">Обзор</span><span>Переключение ролей - демонстрация</span></header><div class="content"><div class="pagehead"><div><div class="eyebrow">Хатанга / контроль клиентских проектов</div><h1 id="heading">Обзор</h1><p class="subtitle" id="subtitle"></p></div><div id="roles" class="roles"></div></div><div id="body"></div></div></main></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div><script>
+(function(){
+'use strict';
+var KEY='hatanga-v32-single-project-1',ROLES={leader:'Павел',manager:'Сергей',moscow:'Москва'};
+var mode='leader',page='main',data=load()||seed();
+function day(n){var d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+(n||0));return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function stamp(){return new Date().toISOString()}
+function date(s){if(!s)return 'Не назначена';var p=String(s).match(/^(\d{4})-(\d{2})-(\d{2})/);return p?p[3]+'.'+p[2]+'.'+p[1]:s}
+function dt(s){var d=new Date(s);return !isNaN(d.getTime())?d.toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}):String(s)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function seed(){
+ var d=new Date();d.setDate(d.getDate()-4);
+ return {version:32,seq:20,project:{id:'p1',client:'Заказчик А',name:'Полевые испытания оборудования',manager:'Сергей',stages:['Контакт','Встреча','Подготовка','Испытания','Результат'],stage:2,blocker:'Есть технические замечания, готовность к выезду не подтверждена.',summary:'Встреча прошла, ожидается информация для согласования испытаний.',next:'Получить подтверждение готовности',nextDue:day(2)},
+ questions:[{id:'q1',title:'Когда оборудование будет готово к выездным испытаниям?',details:'Нужен ориентир, чтобы согласовать дату следующей встречи с заказчиком.',due:day(2),status:'waiting',answer:'',created:d.toISOString(),answered:'',closed:''}],
+ events:[{id:'e1',time:d.toISOString(),actor:'Сергей',title:'Отправлен вопрос в Москву',details:'Когда оборудование будет готово к выездным испытаниям?'}],
+ mails:[{id:'m1',time:d.toISOString(),to:'Москва',title:'Новый вопрос по Заказчику А',body:'Когда оборудование будет готово к выездным испытаниям?',reason:'Запрос'}]};
+}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||'null');return s&&s.version===32&&s.project&&Array.isArray(s.questions)&&Array.isArray(s.events)&&Array.isArray(s.mails)?s:null}catch(e){return null}}
+function save(){try{var raw=JSON.stringify(data);localStorage.setItem(KEY,raw);if(localStorage.getItem(KEY)!==raw)throw Error('Failed');return true}catch(e){alert('Ошибка сохранения в браузере.');return false}}
+function id(p){data.seq++;return p+data.seq}
+function rec(actor,title,details){data.events.push({id:id('e'),time:stamp(),actor:actor,title:title,details:details||''})}
+function mail(to,title,body,reason){data.mails.push({id:id('m'),time:stamp(),to:to,title:title,body:body,reason:reason||''})}
+function waiting(){return data.questions.filter(function(q){return q.status==='waiting'})}
+function answered(){return data.questions.filter(function(q){return q.status==='answered'})}
+function active(){return data.questions.filter(function(q){return q.status!=='closed'})}
+function overdue(q){return q.status==='waiting'&&q.due<day()}
+function current(){
+ var qs=active().slice().sort(function(a,b){return b.created.localeCompare(a.created)}),a=qs.find(function(q){return q.status==='answered'})||qs[0];
+ if(a&&a.status==='answered')return {title:'Ответ получен - решение за Сергеем',owner:'Сергей',next:'Обработать ответ и назначить следующий контроль',due:'',type:'purple'};
+ if(a&&a.status==='waiting')return {title:'Ожидаем Москву',owner:'Москва',next:a.title,due:a.due,type:overdue(a)?'red':'warn'};
+ return {title:'Следующий шаг у менеджера',owner:'Сергей',next:data.project.next,due:data.project.nextDue,type:'green'};
+}
+function tag(t,k){return '<span class="tag '+(k||'')+'">'+esc(t)+'</span>'}
+function btn(t,action,extra,k){return '<button type="button" class="btn '+(k||'')+'" data-action="'+action+'" '+(extra||'')+'>'+esc(t)+'</button>'}
+function stat(label,value,note){return '<div class="stat"><small>'+esc(label)+'</small><strong>'+value+'</strong><em>'+esc(note)+'</em></div>'}
+function box(title,desc,inner,extra){return '<section class="section"><div class="sectionhead"><div><h2>'+esc(title)+'</h2><p>'+esc(desc||'')+'</p></div>'+(extra||'')+'</div>'+inner+'</section>'}
+function field(label,name,type,val,placeholder,extra){return '<div class="field"><label>'+esc(label)+'</label>'+(type==='textarea'?'<textarea name="'+esc(name)+'" placeholder="'+esc(placeholder||'')+'" '+(extra||'')+'>'+esc(val||'')+'</textarea>':'<input name="'+esc(name)+'" type="'+(type||'text')+'" value="'+esc(val||'')+'" placeholder="'+esc(placeholder||'')+'" '+(extra||'')+'>')+'</div>'}
+function formVal(f,n){return String(new FormData(f).get(n)||'').trim()}
+function notify(t){document.getElementById('toast').textContent=t;document.getElementById('toast').classList.add('show');clearTimeout(notify.timer);notify.timer=setTimeout(function(){document.getElementById('toast').classList.remove('show')},3000)}
+function projectHeader(){
+ var p=data.project,c=current(),stage=p.stages;
+ return '<div class="panel pad section"><div class="cardhead"><div><h2>'+esc(p.name)+'</h2><p class="subtitle">'+esc(p.client)+' · менеджер: '+esc(p.manager)+'</p></div>'+tag(c.title,c.type)+'</div><div class="steps">'+stage.map(function(s,i){return '<div class="step '+(i<p.stage?'done':i===p.stage?'current':'')+'"><div></div><small>'+esc(s)+'</small></div>'}).join('')+'</div></div>';
+}
+function entries(limit){
+ var es=data.events.slice().reverse().slice(0,limit||100);
+ return '<div class="panel pad">'+(es.length?es.map(function(e){return '<div class="record"><div class="recorddate">'+esc(dt(e.time))+'</div><div class="recordtext"><strong>'+esc(e.title)+'</strong><p>'+esc(e.details)+'</p><small>'+esc(e.actor)+'</small></div></div>'}).join(''):'<div class="empty">Записей пока нет.</div>')+'</div>';
+}
+function qView(q){
+ return '<div class="card"><div class="cardhead"><h3>'+esc(q.title)+'</h3>'+tag(q.status==='waiting'?'Ожидается':q.status==='answered'?'Ответ получен':'Закрыто',q.status==='waiting'?(overdue(q)?'red':'warn'):q.status==='answered'?'purple':'green')+'</div><p>'+esc(q.details)+'</p><div class="facts"><div><div class="factlabel">Чей мяч</div><div class="factvalue">'+(q.status==='waiting'?'Москва':'Сергей')+'</div></div><div><div class="factlabel">Дата контроля</div><div class="factvalue">'+esc(date(q.due))+'</div></div></div>'+(q.answer?'<div class="line"></div><div class="factlabel">Ответ Москвы</div><p>'+esc(q.answer)+'</p>':'')+'</div>';
+}
+function leader(){
+ var c=current(),p=data.project,ws=waiting(),ans=answered();
+ var overview='<div class="note">Взгляд Павла: за 30 секунд понять, где находится проект, почему стоит, кто отвечает и когда следующий контроль.</div>'+
+ '<div class="stats">'+stat('Проекты',1,'Под наблюдением')+stat('Ждём Москву',ws.length,'Открытые вопросы')+stat('Нужна реакция',ans.length,'Ответ получен')+stat('Просрочено',ws.filter(overdue).length,'По контрольной дате')+'</div>'+
+ box('Общий контроль','Одна строка, без поиска по переписке.',
+ '<div class="panel"><div class="tablehead"><span>Заказчик / проект</span><span>Состояние и препятствие</span><span>Следующий шаг</span><span>Чей мяч / срок</span></div>'+
+ '<div class="tablerow"><div><div class="tabletitle">'+esc(p.client)+'</div><div class="tablesub">'+esc(p.name)+' · '+esc(p.stages[p.stage])+'</div></div><div>'+tag(c.title,c.type)+'<div class="tablesub">'+esc(p.blocker)+'</div></div>'+
+ '<div class="tableval">'+esc(c.next)+'</div><div class="tableval">'+esc(c.owner)+'<div class="tablesub">'+esc(date(c.due))+'</div></div></div></div>');
+ var critical='<div class="panel pad">';
+ if(!ws.length&&!ans.length)critical+='<div class="empty">Нет незакрытых вопросов. Следующий шаг: '+esc(p.next)+' · '+esc(date(p.nextDue))+'</div>';
+ ws.forEach(function(q){critical+='<div class="card"><div class="cardhead"><h3>'+esc(q.title)+'</h3>'+tag(overdue(q)?'Просрочено':'Ждём ответа',overdue(q)?'red':'warn')+'</div><p>Отвечает Москва. Контроль '+esc(date(q.due))+'</p><div class="buttons">'+btn('Попросить Сергея обновить статус','leader-remind','data-id="'+esc(q.id)+'"','small')+'</div></div>'});
+ ans.forEach(function(q){critical+='<div class="card soft"><h3>'+esc(q.title)+'</h3><p>Москва ответила: '+esc(q.answer)+'</p><div class="buttons">'+btn('Напомнить Сергею о решении','leader-remind','data-id="'+esc(q.id)+'"','small')+'</div></div>'});
+ critical+='</div>';
+ return overview+'<div class="two"><div>'+box('В зоне внимания','Что требует контроля или вмешательства.',critical)+box('Последние события','История для руководителя.',entries(4),btn('Весь журнал','page','data-page="history"','small'))+'</div><div>'+
+ box('Состояние проекта','Короткая сводка.',projectHeader()+'<div class="card"><div class="factlabel">Что мешает</div><p>'+esc(p.blocker)+'</p></div>')+
+ box('Уведомления','В будущем напоминания будут уходить по почте.','<div class="note">Сейчас кнопка «Напомнить» только добавляет письмо в демонстрационный журнал. Отправки email пока нет.</div>')+'</div></div>';
+}
+function manager(){
+ var c=current(),ws=waiting(),as=answered(),p=data.project;
+ var status='<div class="card soft"><div class="cardhead"><h3>'+esc(c.title)+'</h3>'+tag(c.owner,'purple')+'</div><p>'+esc(c.next)+'</p><div class="facts"><div><div class="factlabel">Кто отвечает сейчас</div><div class="factvalue">'+esc(c.owner)+'</div></div><div><div class="factlabel">Контроль</div><div class="factvalue">'+esc(date(c.due))+'</div></div></div></div>';
+ as.forEach(function(q){status+='<div class="card green"><div class="cardhead"><h3>Москва ответила</h3>'+tag('Нужен следующий шаг','purple')+'</div><p>'+esc(q.title)+'</p><p>'+esc(q.answer)+'</p>'+
+ '<form class="form" data-form="close" data-id="'+esc(q.id)+'">'+field('Что делаем дальше *','next','text','','Например: согласовать дату испытаний','required maxlength="200"')+
+ field('Когда контролировать *','due','date',day(3),'','required')+'<div class="hint">Ответ сохранится в журнале. Следующее действие не даст проекту остаться без контроля.</div><button class="btn primary" type="submit">Принять ответ и назначить контроль</button></form></div>'});
+ ws.forEach(function(q){status+='<div class="card"><div class="cardhead"><h3>Ожидаем ответ</h3>'+tag(overdue(q)?'Просрочено':'Ждём Москву',overdue(q)?'red':'warn')+'</div><p>'+esc(q.title)+'</p><p>Контроль '+esc(date(q.due))+'</p><div class="buttons">'+btn('Напомнить Москве','manager-remind','data-id="'+esc(q.id)+'"','small')+'</div></div>'});
+ var form='<div class="panel pad"><form class="form" data-form="ask">'+field('Вопрос *','title','textarea','','Какую информацию нам нужно получить?','required maxlength="500"')+
+ field('Уточнение (не обязательно)','details','textarea','','Контекст вопроса','maxlength="1000"')+
+ field('Дата контроля *','due','date',day(3),'','required')+
+ '<div class="hint">Вопрос появится у Москвы, а Павел увидит, от кого ждём ответ. Реальное письмо сейчас не отправится.</div><div><button class="btn primary" type="submit">Направить вопрос</button></div></form></div>';
+ return projectHeader()+'<div class="two"><div>'+
+ box('Что делать Сергею','Ответы, ожидания и ближайшие действия.',status)+box('История по заказчику','Не нужно искать всё в переписке.',entries(4),btn('Весь журнал','page','data-page="history"','small'))+
+ '</div><div>'+box('Задать вопрос Москве','Минимум полей и один ответственный.',form)+'</div></div>';
+}
+function moscow(){
+ var ws=waiting(),done=data.questions.filter(function(q){return q.answer});
+ var body='<div class="panel">';
+ if(!ws.length)body+='<div class="empty">Новых вопросов нет. Сейчас ничего заполнять не нужно.</div>';
+ ws.forEach(function(q){body+='<div class="card" style="margin:15px"><div class="cardhead"><h3>'+esc(q.title)+'</h3>'+tag(overdue(q)?'Просрочено':'Требуется ответ',overdue(q)?'red':'warn')+'</div><p>'+esc(q.details)+'</p><div class="tablesub">От Сергея · '+esc(data.project.client)+' · ответ до '+esc(date(q.due))+'</div>'+
+ '<form class="form" data-form="reply" data-id="'+esc(q.id)+'">'+field('Ваш ответ *','answer','textarea','','Что известно сейчас? Ограничения, готовность, ориентир.','required maxlength="2500"')+
+ '<div class="hint">Ответ автоматически появится у Сергея и Павла, сохранится в журнале.</div><div><button class="btn primary" type="submit">Отправить ответ</button></div></form></div>'});
+ body+='</div>';
+ var prior='<div class="panel">'+(done.length?done.slice().reverse().map(function(q){return '<div class="card" style="margin:12px"><h3>'+esc(q.title)+'</h3><p>'+esc(q.answer)+'</p>'+tag('Отвечено','green')+'</div>'}).join(''):'<div class="empty">Ответов ещё нет.</div>')+'</div>';
+ return '<div class="note">Взгляд представителя Москвы: только вопросы, требующие его информации. Не нужно вести клиентский реестр или работать с этапами проекта.</div>'+
+ '<div class="stats">'+stat('Нужно ответить',ws.length,'Открытые вопросы')+stat('Просрочено',ws.filter(overdue).length,'По дате контроля')+stat('Уже ответил',done.length,'Ответы сохранены')+stat('Заказчиков',1,'Только доступный проект')+'</div>'+
+ '<div class="two"><div>'+box('Мои запросы','Прочитать вопрос, написать ответ и отправить.',body)+'</div><div>'+
+ box('Мои предыдущие ответы','Вся информация сохраняется.',prior)+
+ box('Зачем мне это','Простой процесс вместо регулярных напоминаний в чатах.','<div class="note">Система задаёт конкретный вопрос и сохраняет результат. Ни таблицы проектов, ни лишних форм заполнять не нужно.</div>')+
+ '</div></div>';
+}
+function history(){
+ return projectHeader()+box('История проекта','Вопросы, ответы, контрольные сроки, решения и напоминания.',entries(100));
+}
+function mailbox(){
+ return '<div class="note">Это только имитация исходящих уведомлений. Письма не отправлялись и не доставлялись. Так мы проверяем, кого и о чём система должна оповестить.</div>'+
+ box('Журнал писем','Фиксируются при запросе, ответе и напоминании.',
+ '<div class="panel">'+data.mails.slice().reverse().map(function(m){return '<div class="mail"><div class="mailhead"><strong>'+esc(m.title)+'</strong>'+tag('Не отправлено','warn')+'</div><p>'+esc(m.body)+'</p><small>Кому: '+esc(m.to)+' · '+esc(dt(m.time))+' · '+esc(m.reason)+'</small></div>'}).join('')+'</div>');
+}
+function settings(){
+ return '<div class="card"><h3>Что проверяем</h3><p>Один проект, три взгляда. Сергей задаёт вопрос, Москва отвечает, Сергей решает следующий шаг. Павел на любом этапе видит состояние. Все изменения сохраняются в едином журнале.</p></div>'+
+ '<div class="card"><h3>Ограничения прототипа</h3><p>Переключатель ролей не является системой авторизации. Общая база, контроль прав и доставка email ещё не реализованы. Данные хранятся только в этом браузере. Сведения о заказчике демонстрационные.</p></div>'+
+ '<div class="card"><h3>Локальные данные</h3><p>v3.2 имеет отдельное хранилище и не меняет предыдущие версии.</p><div class="buttons">'+btn('Экспорт JSON','export','','small')+btn('Импорт JSON','import','','small')+btn('Сбросить демо','reset','','small warn')+'</div></div><input type="file" id="import-file" accept=".json,application/json" hidden>';
+}
+function render(){
+ var tabs=[['main','Обзор'],['history','История'],['mail','Письма'],['settings','Настройки']];
+ document.getElementById('roles').innerHTML=Object.keys(ROLES).map(function(r){return '<button type="button" class="role '+(mode===r?'active':'')+'" data-action="role" data-role="'+r+'" aria-pressed="'+(mode===r?'true':'false')+'"><b>'+ROLES[r]+'</b><small>'+({leader:'Руководитель',manager:'Менеджер',moscow:'Исполнитель'}[r])+'</small></button>'}).join('');
+ document.getElementById('nav').innerHTML=tabs.map(function(t){return '<button type="button" class="'+(page===t[0]?'active':'')+'" data-action="page" data-page="'+t[0]+'"><span class="navicon">'+({'main':'◫','history':'◷','mail':'✉','settings':'⚙'}[t[0]])+'</span>'+t[1]+'</button>'}).join('');
+ var titles={leader:['Общий контроль','Что происходит с проектами и где требуется вмешательство.'],manager:['Мои проекты','Что сделать, кого спросить и когда проверить.'],moscow:['Мои запросы','Только вопросы, на которые требуется ответ.']};
+ var heading=page==='main'?titles[mode]:({history:['История проекта','Одна история для всех участников.'],mail:['Уведомления','Демонстрационный журнал будущих email.'],settings:['Настройки','Данные и границы прототипа.']}[page]);
+ document.getElementById('heading').textContent=heading[0];document.getElementById('subtitle').textContent=heading[1];
+ document.getElementById('crumb').textContent=ROLES[mode]+' / '+(page==='main'?'Обзор':tabs.find(function(x){return x[0]===page})[1]);
+ document.getElementById('body').innerHTML=page==='main'?(mode==='leader'?leader():mode==='manager'?manager():moscow()):page==='history'?history():page==='mail'?mailbox():settings();
+}
+function role(r){if(!ROLES[r])return;mode=r;page='main';render()}
+function ask(f){
+ if(mode!=='manager')return;
+ var title=formVal(f,'title'),details=formVal(f,'details'),due=formVal(f,'due');if(!title||!due)return notify('Заполни вопрос и контрольную дату.');
+ var prev=JSON.stringify(data);var q={id:id('q'),title:title,details:details,due:due,status:'waiting',answer:'',created:stamp(),answered:'',closed:''};data.questions.push(q);data.project.next=title;data.project.nextDue=due;
+ rec('Сергей','Отправлен вопрос в Москву',title+'\nКонтроль: '+date(due));mail('Москва','Вопрос по проекту '+data.project.client,title+(details?'\n'+details:'')+'\nКонтроль: '+date(due),'Вопрос');
+ if(!save()){data=JSON.parse(prev);return}render();notify('Вопрос добавлен. Переключись на Москву.');
+}
+function reply(f){
+ if(mode!=='moscow')return;var q=data.questions.find(function(x){return x.id===f.dataset.id}),answer=formVal(f,'answer');
+ if(!q||q.status!=='waiting'||!answer)return notify('Нужен ответ на открытый вопрос.');
+ var prev=JSON.stringify(data);q.answer=answer;q.status='answered';q.answered=stamp();
+ rec('Москва','Получен ответ',q.title+'\n'+answer);mail('Сергей','Ответ по проекту '+data.project.client,q.title+'\n'+answer,'Ответ');
+ if(!save()){data=JSON.parse(prev);return}render();notify('Ответ записан. Переключись на Сергея.');
+}
+function closeQuestion(f){
+ if(mode!=='manager')return;var q=data.questions.find(function(x){return x.id===f.dataset.id}),next=formVal(f,'next'),due=formVal(f,'due');
+ if(!q||q.status!=='answered'||!next||!due)return notify('Нужно назначить следующий шаг и дату контроля.');
+ var prev=JSON.stringify(data);q.status='closed';q.closed=stamp();data.project.next=next;data.project.nextDue=due;
+ rec('Сергей','Ответ обработан, назначен следующий контроль',q.title+'\nСледующий шаг: '+next+'\nКонтроль: '+date(due));mail('Павел','Состояние проекта обновлено',next+'\nКонтроль: '+date(due),'Результат');
+ if(!save()){data=JSON.parse(prev);return}render();notify('Ответ обработан, контроль назначен.');
+}
+function remind(qid,from){
+ var q=data.questions.find(function(x){return x.id===qid});if(!q)return;var prev=JSON.stringify(data);
+ var to=from==='leader'?'Сергей':'Москва';
+ rec(from==='leader'?'Павел':'Сергей','Отправлено напоминание для '+to,q.title);
+ mail(to,'Напоминание по проекту '+data.project.client,q.title+'\nКонтроль: '+date(q.due),'Напоминание');
+ if(!save()){data=JSON.parse(prev);return}render();notify('Напоминание появилось в журнале писем.');
+}
+function exportData(){var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='hatanga-v32-'+day()+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},300)}
+document.addEventListener('click',function(e){
+ var b=e.target.closest('[data-action]');if(!b)return;var action=b.dataset.action;
+ if(action==='page'){page=b.dataset.page;render();return}
+ if(action==='role'){role(b.dataset.role);return}
+ if(action==='leader-remind'&&mode==='leader'){remind(b.dataset.id,'leader');return}
+ if(action==='manager-remind'&&mode==='manager'){remind(b.dataset.id,'manager');return}
+ if(action==='export'){exportData();return}
+ if(action==='import'){document.getElementById('import-file').click();return}
+ if(action==='reset'){if(!confirm('Сбросить все локальные данные v3.2?'))return;data=seed();save();role('leader');notify('Демо сброшено')}
+});
+document.addEventListener('submit',function(e){var f=e.target;if(!f.dataset||!f.dataset.form)return;e.preventDefault();if(f.dataset.form==='ask')ask(f);if(f.dataset.form==='reply')reply(f);if(f.dataset.form==='close')closeQuestion(f)});
+document.addEventListener('change',function(e){if(e.target.id!=='import-file')return;var f=e.target.files[0];if(!f)return;var reader=new FileReader();reader.onload=function(){try{var v=JSON.parse(reader.result);if(!v||v.version!==32||!v.project||!Array.isArray(v.questions)||!Array.isArray(v.events)||!Array.isArray(v.mails))throw Error('Неподходящий файл');if(!confirm('Заменить текущие данные v3.2?'))return;var previous=data;data=v;if(!save()){data=previous;return}render();notify('Данные импортированы')}catch(err){alert('Ошибка импорта: '+err.message)}finally{e.target.value=''}};reader.readAsText(f)});
+render();
+})();
+</script></body></html>
