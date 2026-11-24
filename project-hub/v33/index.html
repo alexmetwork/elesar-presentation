@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8fb">
+<title>Хатанга - семь проектов v3.3</title>
+<style>
+:root{font-family:"Segoe UI",Arial,sans-serif;color:#28354a;background:#f7f8fb;--line:#e3e7ee;--text:#2c3850;--muted:#8390a3;--purple:#6158b1;--green:#3a8266;--gold:#a27030;--red:#b65356}*{box-sizing:border-box}body{margin:0;font-size:13px;line-height:1.5}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid #8578d9;outline-offset:2px}button:disabled{opacity:.5;cursor:default}a{text-decoration:none;color:inherit}
+.layout{min-height:100vh;display:grid;grid-template-columns:224px minmax(0,1fr)}aside{background:#fff;border-right:1px solid var(--line);padding:24px 14px;display:flex;flex-direction:column;gap:28px;position:sticky;top:0;height:100vh}.brand{display:flex;gap:10px;align-items:center;border-radius:9px;padding:5px 10px}.brand:hover{background:#f6f5fb}.mark{background:#6159b1;color:#fff;font-size:20px;border-radius:11px;width:36px;height:36px;display:grid;place-items:center;font-weight:750}.brandname{font-size:16px;font-weight:750}.brandsub{font-size:9px;letter-spacing:1.1px;color:#98a3b2;text-transform:uppercase}
+.navtitle{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#a4adbb;padding:0 12px 10px}.nav{display:grid;gap:4px}.nav button{width:100%;background:transparent;border:0;border-radius:8px;padding:11px 12px;text-align:left;color:#69778c;font-size:12px}.nav button:hover{background:#f6f7fa}.nav button.active{background:#f0eefb;color:#5e56ab;font-weight:650}.nav .navicon{font-size:16px;display:inline-block;width:26px}.sidefooter{margin-top:auto;border-top:1px solid var(--line);padding:16px 10px 0;font-size:10px;line-height:1.7;color:#9ba5b4}
+main{min-width:0}.topbar{height:60px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 35px;gap:12px;font-size:11px;color:#9aa5b4}.content{padding:32px 36px 62px;max-width:1320px;margin:auto}.pagehead{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:23px}.eyebrow{font-size:10px;font-weight:650;letter-spacing:1px;text-transform:uppercase;color:#99a4b5;margin-bottom:7px}h1{font-size:28px;letter-spacing:-.8px;margin:0;line-height:1.25}h2{font-size:14px;margin:0;font-weight:700}h3{font-size:12px;margin:0;font-weight:700}.subtitle{font-size:12px;color:#8896a7;margin:9px 0 0;max-width:680px}
+.roles{display:flex;gap:7px;flex-wrap:wrap}.role{min-width:105px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 12px;text-align:left;color:#6f7c8f}.role b{display:block;font-size:12px}.role small{font-size:10px;color:#a3adba}.role.active{background:#f0effa;border-color:#b7b0e2;color:#5d54a6}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}.pad{padding:21px}.section{margin:0 0 22px}.sectionhead{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:12px}.sectionhead p{font-size:11px;color:#8b97a9;margin:5px 0 0}.two{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr);gap:20px}.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:23px}.stat{padding:18px;background:#fff;border:1px solid var(--line);border-radius:11px}.stat small{color:#8390a2;font-size:11px}.stat strong{font-size:29px;display:block;margin:8px 0 2px;letter-spacing:-.7px}.stat em{font-style:normal;color:#a0aaba;font-size:10px}
+.btn{background:#fff;border:1px solid #dce1e9;border-radius:8px;padding:9px 12px;font-weight:600;font-size:11px;color:#53617b}.btn:hover{background:#f8f9fc;border-color:#bfc8d6}.btn.primary{background:#6259b1;color:#fff;border-color:#6259b1}.btn.primary:hover{background:#5249a2}.btn.small{font-size:10px;padding:7px 10px}.btn.warn{color:#ab5d52}.buttons{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:15px}.tag{display:inline-flex;font-size:10px;font-weight:600;line-height:1.4;padding:4px 8px;border-radius:7px;background:#f0f2f5;color:#6f7b8d}.tag.warn{background:#fdf1e0;color:#a06b2b}.tag.red{background:#f9e8e9;color:#af4e52}.tag.green{background:#e8f5ec;color:#3b8063}.tag.purple{background:#f0eefa;color:#6259ae}
+.note{background:#fbfaff;border:1px solid #e9e5f5;border-radius:10px;color:#756e94;padding:13px 16px;font-size:11px;line-height:1.7;margin-bottom:21px}.card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px 20px;margin-bottom:10px}.card.soft{background:#fbfaff;border-color:#e6e3f2}.card.green{background:#f8fcf9;border-color:#e0eee4}.cardhead{display:flex;align-items:center;justify-content:space-between;gap:10px}.card h3{font-size:13px}.card p{font-size:11px;color:#728198;line-height:1.7;white-space:pre-wrap;margin:8px 0 0}.line{height:1px;background:#eef0f4;margin:17px 0}.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:17px}.factlabel{font-size:10px;color:#929dad}.factvalue{font-size:12px;color:#39465d;font-weight:650;margin-top:4px}
+.tablehead,.tablerow{display:grid;grid-template-columns:1.12fr 1.1fr 1fr .72fr;gap:13px;padding:17px 18px;border-bottom:1px solid #ecf0f4}.tablehead{font-size:10px;font-weight:620;color:#99a4b2;background:#fafbfd;padding-top:11px;padding-bottom:11px}.tablerow:last-child{border-bottom:0}.tabletitle{font-weight:660;font-size:12px}.tablesub{color:#8c99ab;font-size:11px;margin-top:4px;line-height:1.6}.tableval{font-size:11px;color:#516079;line-height:1.6}.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:17px}.step>div{background:#e6eaf0;border-radius:6px;height:7px}.step.done>div{background:#94c7b5}.step.current>div{background:#8e84d4}.step small{display:block;font-size:10px;color:#96a2b2;margin-top:8px;line-height:1.45}.step.current small{font-weight:700;color:#665baa}
+.form{display:grid;gap:13px;margin-top:14px}.field{display:grid;gap:6px}.field label{font-size:11px;color:#58667e;font-weight:620}.field input,.field textarea{border-radius:8px;border:1px solid #dce2eb;color:#3a485f;padding:10px 11px;font-size:12px;background:#fff;width:100%;outline:0}.field textarea{min-height:84px;resize:vertical}.field input:focus,.field textarea:focus{border-color:#9d91dd;box-shadow:0 0 0 3px #f3f1fb}.hint{font-size:10px;color:#8e9bac;line-height:1.55}.empty{padding:22px;color:#8a98aa;font-size:12px}
+.record{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid #edf0f4}.record:last-child{border:0}.recorddate{min-width:104px;color:#9ca6b5;font-size:10px}.recordtext{font-size:11px;color:#48576e}.recordtext strong{display:block;margin-bottom:6px}.recordtext p{font-size:11px;white-space:pre-wrap;color:#79879a;margin:0;overflow-wrap:anywhere;line-height:1.65}.recordtext small{display:block;margin-top:6px;color:#a4adbc}.mail{padding:16px 18px;border-bottom:1px solid #edf0f5}.mail:last-child{border:0}.mailhead{display:flex;gap:12px;justify-content:space-between}.mail p{font-size:11px;color:#7c899b;white-space:pre-wrap;line-height:1.7}.mail small{font-size:10px;color:#a4adba}.toast{position:fixed;right:20px;bottom:20px;color:#fff;background:#2e3951;border-radius:8px;padding:12px 16px;font-size:12px;opacity:0;transition:opacity .2s;pointer-events:none}.toast.show{opacity:1}
+@media(max-width:1200px){.two{grid-template-columns:1fr}.tablehead,.tablerow{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:830px){.layout{display:block}aside{position:static;height:auto;gap:12px;padding:12px 15px}.nav{display:flex;flex-wrap:wrap}.nav button{width:auto}.navtitle,.sidefooter{display:none}.topbar{height:45px;padding:0 19px}.content{padding:24px 18px 55px}.pagehead{flex-direction:column}}@media(max-width:510px){.roles{width:100%}.role{min-width:0;flex:1}.cols{grid-template-columns:1fr}.tablehead{display:none}.tablerow{grid-template-columns:1fr}.record{flex-direction:column;gap:5px}.stat{padding:13px}.stat strong{font-size:25px}}
+
+/* v3.3 - multiple projects */
+.screen-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.filter{border:1px solid #e3e7ee;background:#fff;color:#68788f;padding:7px 11px;border-radius:8px;font-size:11px}.filter.active{background:#efedfa;color:#5e54a6;border-color:#dcd5f3;font-weight:650}
+.row-button{width:100%;display:grid;grid-template-columns:minmax(145px,1.1fr) minmax(170px,1.22fr) minmax(140px,1fr) minmax(98px,.72fr);gap:13px;padding:17px 18px;border:0;border-bottom:1px solid #edf0f5;text-align:left;background:#fff;align-items:start}.row-button:last-child{border-bottom:0}.row-button:hover{background:#faf9ff}.row-button .tabletitle{color:#303d55}.row-button .tableval,.row-button .tablesub{overflow-wrap:anywhere}
+.row-button.overdue{border-left:3px solid #ce7e75}.row-button.focus{background:#f6f4fd}
+.focus-panel{border:1px solid #ddd9f2;background:#fdfcff;border-radius:11px;padding:17px 19px;margin:0 0 19px}
+.focus-title{font-size:13px;font-weight:710;color:#3b4761;margin:0 0 8px}.focus-info{color:#7c889a;font-size:11px;line-height:1.65}
+.qa{background:#fff;border:1px solid #e7eaf1;border-radius:10px;padding:15px 17px;margin-bottom:11px}.qa-title{font-weight:670;font-size:12px}.qa-head{display:flex;justify-content:space-between;align-items:start;gap:10px}.qa-meta{font-size:10px;color:#97a2b0;margin:6px 0 0}
+.qa p{font-size:11px;color:#79869b;white-space:pre-wrap;line-height:1.6;margin:8px 0}
+.qa .form{margin-top:12px}.qa .form textarea{min-height:68px}
+.compact-project{border:1px solid #e4e8ef;border-radius:11px;padding:15px 17px;background:#fff;margin-bottom:10px}.compact-project:hover{border-color:#c8bde5}.compact-top{display:flex;align-items:center;justify-content:space-between;gap:11px}.compact-client{font-size:10px;color:#9ba5b4;margin-bottom:3px}.compact-name{font-weight:700;font-size:13px}.compact-desc{font-size:11px;color:#78859a;margin-top:8px}
+.compact-foot{display:flex;flex-wrap:wrap;gap:13px;font-size:10px;color:#8896a8;margin-top:10px}
+.inline-select{display:flex;gap:8px;align-items:center}.inline-select select{border:1px solid #dce1e9;border-radius:8px;padding:7px 10px;background:#fff;color:#59677e;font-size:11px;max-width:220px}
+.progress-strip{margin-top:16px;display:flex;gap:6px;min-width:0}.progress-strip .step{min-width:0;flex:1}.small-section{font-size:11px;color:#8090a4}
+.mini-kpi{font-size:10px;color:#8d97a6}.mini-kpi b{font-size:12px;color:#34415a}
+.action-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 22px}.action-grid>div{border:1px solid #e4e6ed;background:#fff;border-radius:10px;padding:13px;color:#778599;font-size:11px}.action-grid strong{display:block;font-size:12px;color:#39465a;margin-bottom:5px}
+.helptext{color:#8b96aa;font-size:11px;line-height:1.65}.pill-link{border:none;background:none;padding:1px;color:#645aaa;font-size:11px;font-weight:600;cursor:pointer}
+.task-form{margin-top:14px;padding:14px 15px;background:#fbfaff;border:1px solid #ece7f6;border-radius:10px}
+.task-form .form{margin-top:0}.task-form h3{margin-bottom:11px}.two-column{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.summarygrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0 8px}.summarygrid>div{font-size:10px;color:#8998aa}.summarygrid b{display:block;color:#354258;font-size:11px;margin-top:5px}
+.cap{font-size:10px;color:#a0aab8;text-transform:uppercase;letter-spacing:.75px;font-weight:670}
+@media(max-width:1200px){.row-button{grid-template-columns:1fr 1fr}.summarygrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.row-button{grid-template-columns:1fr}.action-grid{grid-template-columns:1fr}.two-column{grid-template-columns:1fr}.role{padding:7px 9px}.summarygrid{grid-template-columns:1fr 1fr}}
+</style>
+</head><body>
+<div class="layout"><aside><a class="brand" href="./" aria-label="Хатанга - главная"><span class="mark">Х</span><span><div class="brandname">Хатанга</div><div class="brandsub">Project Hub / v3.3</div></span></a><div><div class="navtitle">Рабочее пространство</div><nav id="nav" class="nav"></nav></div><div class="sidefooter">v3.3 - семь вымышленных проектов. Данные локальные, email не отправляется. Это не система авторизации.</div></aside>
+<main><header class="topbar"><span id="crumb">Обзор</span><span>Переключение ролей - демонстрация</span></header><div class="content"><div class="pagehead"><div><div class="eyebrow">Хатанга / контроль клиентских проектов</div><h1 id="heading">Обзор</h1><p class="subtitle" id="subtitle"></p></div><div id="roles" class="roles"></div></div><div id="body"></div></div></main></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div><script>
+(function(){
+'use strict';
+const KEY='hatanga-v33-multi-demo-1', ROLES={leader:'Павел',manager:'Сергей',moscow:'Москва'};
+const PHASES=['Контакт','Согласование','Подготовка','Испытания','Результат'];
+let role='leader',page='main',filter='all',selected='p1',data=load()||seed();
+function day(n){let d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+(n||0));return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function now(){return new Date().toISOString()}
+function date(s){if(!s)return 'Не назначена';let m=String(s).match(/^(\d{4})-(\d{2})-(\d{2})/);return m?m[3]+'.'+m[2]+'.'+m[1]:s}
+function dt(s){let d=new Date(s);return isNaN(d.getTime())?String(s):d.toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function seed(){
+ let e=[];
+ function addEvent(p,offset,actor,title,details){let d=new Date();d.setDate(d.getDate()+offset);e.push({id:'e'+(e.length+1),pid:p,at:d.toISOString(),actor,title,details})}
+ let projects=[
+ {id:'p1',client:'Заказчик А',name:'Выездные испытания терминала',stage:2,summary:'Испытания ещё не согласованы.',blocker:'После предварительных испытаний остались замечания по связи.',next:{title:'Подтвердить техническую готовность к выезду',owner:'moscow',due:day(-2)},approval:null},
+ {id:'p2',client:'Заказчик Б',name:'Пилотное подключение',stage:4,summary:'Отчёт по пилоту передан.',blocker:'Окончательное решение заказчика пока не получено.',next:{title:'Уточнить решение заказчика по пилоту',owner:'customer',due:day(1)},approval:null},
+ {id:'p3',client:'Заказчик В',name:'Проработка интерфейсов',stage:1,summary:'Требуется уточнение параметров подключения.',blocker:'Нет согласованного перечня интерфейсов.',next:{title:'Получить техническое заключение',owner:'moscow',due:day(2)},approval:null},
+ {id:'p4',client:'Заказчик Г',name:'Демонстрация модема',stage:3,summary:'Демонстрация согласована.',blocker:'Препятствий не выявлено.',next:{title:'Передать заказчику инструкцию и подтвердить время',owner:'manager',due:day(0)},approval:null},
+ {id:'p5',client:'Заказчик Д',name:'Новый запрос на модем',stage:0,summary:'Первичный запрос зарегистрирован.',blocker:'Не назначено следующее действие и дата контроля.',next:{title:'',owner:'',due:''},approval:null},
+ {id:'p6',client:'Заказчик Е',name:'Коммерческий пилот',stage:1,summary:'Запрашивается согласование специальных условий.',blocker:'Нужно решение руководителя до продолжения переговоров.',next:{title:'Принять решение по условиям пилота',owner:'leader',due:day(1)},approval:{status:'pending',title:'Согласовать пилотную передачу оборудования',request:'Сергей просит разрешить пилотный комплект без оплаты на испытательный срок.',note:''}},
+ {id:'p7',client:'Заказчик Ж',name:'Результаты испытаний',stage:3,summary:'Московская команда уже направила отчёт.',blocker:'Необходимо обсудить результаты с заказчиком.',next:{title:'Согласовать дальнейшие действия по испытаниям',owner:'manager',due:day(2)},approval:null}
+ ];
+ let qs=[
+ {id:'q1',pid:'p1',title:'Когда станция будет готова к выездным испытаниям?',details:'Нужно понимать ориентир готовности, чтобы согласовать дату с заказчиком.',due:day(-2),status:'waiting',answer:'',created:day(-6)+'T10:00:00',answered:'',closed:''},
+ {id:'q2',pid:'p1',title:'Какие условия нужны для повторного теста?',details:'Уточнить необходимые условия и состав оборудования.',due:day(3),status:'waiting',answer:'',created:day(-3)+'T11:00:00',answered:'',closed:''},
+ {id:'q3',pid:'p3',title:'Какие варианты интерфейса доступны?',details:'Нужен краткий список поддерживаемых вариантов без отдельного отчёта.',due:day(2),status:'waiting',answer:'',created:day(-2)+'T09:00:00',answered:'',closed:''},
+ {id:'q4',pid:'p7',title:'Какие результаты получены на стендовых испытаниях?',details:'Нужен краткий итог для заказчика.',due:day(-1),status:'answered',answer:'Проверки завершены. Критичных замечаний нет, протокол готов к обсуждению.',created:day(-4)+'T09:00:00',answered:day(-1)+'T15:00:00',closed:''}
+ ];
+ addEvent('p1',-6,'Сергей','Запрос отправлен в Москву','Нужен срок готовности станции.');
+ addEvent('p1',-3,'Сергей','Направлен дополнительный вопрос','Уточнить условия повторного тестирования.');
+ addEvent('p2',-3,'Сергей','Передан отчёт заказчику','Ожидаем решение о следующем этапе.');
+ addEvent('p3',-2,'Сергей','Запрошены параметры интерфейса','Ожидаем ответ технической команды.');
+ addEvent('p4',-1,'Сергей','Согласована демонстрация','Остаётся отправить инструкцию и подтвердить время.');
+ addEvent('p5',-1,'Сергей','Получен новый запрос','Следующий контакт ещё не назначен.');
+ addEvent('p6',-1,'Сергей','Запрошено согласование','Особые условия передачи оборудования.');
+ addEvent('p7',-1,'Москва','Передан отчёт об испытаниях',qs[3].answer);
+ return {version:33,seq:150,projects,questions:qs,events:e,mails:[{id:'m1',at:day(-6)+'T10:00:00',to:'Москва',pid:'p1',subject:'Вопрос по Заказчику А',body:qs[0].title,kind:'Запрос',status:'draft'},{id:'m2',at:day(-1)+'T15:00:00',to:'Сергей',pid:'p7',subject:'Получен ответ по Заказчику Ж',body:qs[3].answer,kind:'Ответ',status:'draft'}]};
+}
+function valid(d){return d&&d.version===33&&Array.isArray(d.projects)&&Array.isArray(d.questions)&&Array.isArray(d.events)&&Array.isArray(d.mails)}
+function load(){try{let d=JSON.parse(localStorage.getItem(KEY)||'null');return valid(d)?d:null}catch(e){return null}}
+function save(){try{let v=JSON.stringify(data);localStorage.setItem(KEY,v);if(localStorage.getItem(KEY)!==v)throw Error('Save failed');return true}catch(e){alert('Не получилось сохранить данные в этом браузере.');return false}}
+function tx(fn){let before=JSON.stringify(data);fn();if(!save()){data=JSON.parse(before);return false}return true}
+function id(prefix){data.seq++;return prefix+data.seq}
+function p(id){return data.projects.find(x=>x.id===id)}
+function q(id){return data.questions.find(x=>x.id===id)}
+function questions(pid){return data.questions.filter(x=>x.pid===pid)}
+function pending(){return data.questions.filter(x=>x.status==='waiting')}
+function answering(){return data.questions.filter(x=>x.status==='answered')}
+function owner(o){return ({moscow:'Москва',leader:'Павел',manager:'Сергей',customer:'Заказчик'}[o]||'Не назначен')}
+function stage(project){return PHASES[project.stage]||'Без этапа'}
+function overdue(d){return !!d&&d<day(0)}
+function rec(pid,actor,title,details){data.events.push({id:id('e'),pid,at:now(),actor,title,details:details||''})}
+function mail(pid,to,subject,body,kind){data.mails.push({id:id('m'),pid,to,at:now(),subject,body,kind,status:'draft'})}
+function info(project){
+ let qs=questions(project.id),ans=qs.filter(x=>x.status==='answered'),wait=qs.filter(x=>x.status==='waiting');
+ if(project.approval&&project.approval.status==='pending')return {category:'leader',label:'Нужно решение Павла',detail:project.approval.title,owner:'Павел',due:project.next.due,tone:'warn'};
+ if(ans.length)return {category:'manager',label:'Ответ ждёт обработки',detail:ans[0].title,owner:'Сергей',due:'',tone:'purple'};
+ if(wait.length){wait.sort((a,b)=>a.due.localeCompare(b.due));let x=wait[0];return {category:'moscow',label:overdue(x.due)?'Москва просрочила ответ':'Ожидаем Москву',detail:x.title,owner:'Москва',due:x.due,tone:overdue(x.due)?'red':'warn'} }
+ if(!project.next.title||!project.next.due||!project.next.owner)return {category:'none',label:'Нет следующего контроля',detail:'Требуется назначить действие, ответственного и срок',owner:'Не назначен',due:'',tone:'red'};
+ return {category:project.next.owner,label:project.next.owner==='customer'?'Ожидаем заказчика':project.next.owner==='leader'?'Нужно решение Павла':'Следующий шаг определён',detail:project.next.title,owner:owner(project.next.owner),due:project.next.due,tone:overdue(project.next.due)?'red':project.next.owner==='manager'?'green':'warn'};
+}
+function tag(text,tone){return '<span class="tag '+(tone||'')+'">'+esc(text)+'</span>'}
+function btn(text,act,attrs,kind){return '<button class="btn '+(kind||'')+'" type="button" data-action="'+act+'" '+(attrs||'')+'>'+esc(text)+'</button>'}
+function box(title,desc,body,action){return '<section class="section"><div class="sectionhead"><div><h2>'+esc(title)+'</h2><p>'+esc(desc||'')+'</p></div>'+(action||'')+'</div>'+body+'</section>'}
+function metric(name,n,detail){return '<div class="stat"><small>'+esc(name)+'</small><strong>'+n+'</strong><em>'+esc(detail)+'</em></div>'}
+function field(label,name,type,val,placeholder,extra){return '<div class="field"><label>'+esc(label)+'</label>'+(type==='textarea'?'<textarea name="'+esc(name)+'" placeholder="'+esc(placeholder||'')+'" '+(extra||'')+'>'+esc(val||'')+'</textarea>':'<input name="'+esc(name)+'" type="'+(type||'text')+'" value="'+esc(val||'')+'" placeholder="'+esc(placeholder||'')+'" '+(extra||'')+'>')+'</div>'}
+function get(f,n){return String(new FormData(f).get(n)||'').trim()}
+function toast(s){let el=document.getElementById('toast');el.textContent=s;el.classList.add('show');clearTimeout(toast.handle);toast.handle=setTimeout(()=>el.classList.remove('show'),2800)}
+function navigate(pageName){page=pageName;render();window.scrollTo(0,0)}
+function setRole(r){if(!ROLES[r])return;role=r;page='main';filter='all';render();window.scrollTo(0,0)}
+function projectSelected(id){if(!p(id))return;selected=id;page='project';render();window.scrollTo(0,0)}
+function stages(project){return '<div class="progress-strip">'+PHASES.map((s,i)=>'<div class="step '+(i<project.stage?'done':i===project.stage?'current':'')+'"><div></div><small>'+esc(s)+'</small></div>').join('')+'</div>'}
+function projectInfo(project){
+ let s=info(project);
+ return '<div class="panel pad section"><div class="cardhead"><div><div class="eyebrow">'+esc(project.client)+'</div><h2 style="font-size:18px">'+esc(project.name)+'</h2><p class="subtitle">'+esc(project.summary)+'</p></div>'+tag(s.label,s.tone)+'</div>'+stages(project)+
+ '<div class="summarygrid"><div>Этап<b>'+esc(stage(project))+'</b></div><div>Чей мяч<b>'+esc(s.owner)+'</b></div><div>Контроль<b>'+esc(date(s.due))+'</b></div><div>Менеджер<b>Сергей</b></div></div><div class="line"></div><div class="factlabel">Что препятствует продвижению</div><p class="helptext">'+esc(project.blocker)+'</p></div>';
+}
+function feed(pid,limit){
+ let ev=data.events.filter(e=>!pid||e.pid===pid).slice().sort((a,b)=>b.at.localeCompare(a.at)).slice(0,limit||30);
+ return '<div class="panel pad">'+(ev.length?ev.map(e=>'<div class="record"><div class="recorddate">'+esc(dt(e.at))+'</div><div class="recordtext"><strong>'+esc(e.title)+'</strong><p>'+esc(e.details)+'</p><small>'+esc(e.actor)+' · '+esc(p(e.pid)?.client||'')+'</small></div></div>').join(''):'<div class="empty">Записей пока нет.</div>')+'</div>';
+}
+function filters(){
+ let variants=[['all','Все'],['problems','Проблемы'],['overdue','Просрочки'],['leader','Павел'],['moscow','Москва'],['manager','Сергей']];
+ return '<div class="screen-actions">'+variants.map(a=>'<button class="filter '+(filter===a[0]?'active':'')+'" data-action="filter" data-value="'+a[0]+'">'+a[1]+'</button>').join('')+'</div>';
+}
+function listFilter(project){
+ let x=info(project);
+ if(filter==='all')return true;
+ if(filter==='leader')return x.category==='leader';
+ if(filter==='moscow')return x.category==='moscow';
+ if(filter==='manager')return x.category==='manager'||x.category==='customer'||x.category==='none';
+ if(filter==='overdue')return !!x.due&&overdue(x.due);
+ return x.tone==='red'||x.category==='leader'||x.category==='none'||x.category==='manager'&&questions(project.id).some(q=>q.status==='answered');
+}
+function leader(){
+ let problems=data.projects.filter(x=>info(x).tone==='red'||info(x).category==='leader'||info(x).category==='none').length;
+ let overdueCount=data.projects.filter(x=>overdue(info(x).due)).length;
+ let controls=data.projects.filter(x=>info(x).category==='none').length;
+ let shown=data.projects.filter(listFilter);
+ return '<div class="note">Демо для Павла: семь вымышленных клиентов, разные ситуации. Нажми на строку проекта, чтобы посмотреть подробности и при необходимости принять решение. Все изменения видны остальным ролям.</div>'+
+ '<div class="stats">'+metric('Проекты',data.projects.length,'Все направления')+metric('Требуют внимания',problems,'Проблемы и решения')+metric('Просрочено',overdueCount,'Контрольные даты')+metric('Без контроля',controls,'Нет следующего шага')+'</div>'+
+ box('Реестр проектов','В одной строке: состояние, препятствие, следующий шаг, ответственный и контроль.',filters())+
+ '<div class="panel"><div class="tablehead"><span>Заказчик / проект</span><span>Состояние / препятствие</span><span>Следующий шаг</span><span>У кого мяч / срок</span></div>'+
+ (shown.length?shown.map(project=>{
+ let s=info(project);
+ return '<button class="row-button '+(s.tone==='red'?'overdue':'')+'" data-action="open" data-id="'+esc(project.id)+'"><span><span class="tabletitle">'+esc(project.client)+'</span><span class="tablesub">'+esc(project.name)+'<br>'+esc(stage(project))+'</span></span><span>'+tag(s.label,s.tone)+'<span class="tablesub" style="display:block">'+esc(project.blocker)+'</span></span><span class="tableval">'+esc(s.detail)+'</span><span class="tableval"><strong>'+esc(s.owner)+'</strong><span class="tablesub" style="display:block">'+esc(date(s.due))+'</span></span></button>';
+ }).join(''):'<div class="empty">Нет проектов по этому фильтру.</div>')+'</div>'+
+ '<div class="two" style="margin-top:20px"><div>'+box('Требуют решения Павла','Одобри условия пилота или запроси уточнения.',
+ data.projects.filter(x=>x.approval?.status==='pending').map(x=>'<div class="card soft"><div class="cardhead"><h3>'+esc(x.client)+' - '+esc(x.approval.title)+'</h3>'+tag('Решение Павла','warn')+'</div><p>'+esc(x.approval.request)+'</p><div class="buttons">'+btn('Открыть и принять решение','open','data-id="'+esc(x.id)+'"','primary small')+'</div></div>').join('')||'<div class="panel empty">Нет запросов.</div>')+
+ box('Последние изменения','Все действия фиксируются.',feed(null,5),btn('История целиком','page','data-page="history"','small'))+
+ '</div><div>'+box('Что проверяем','Павел работает по исключениям.','<div class="card"><h3>Наблюдение без микроменеджмента</h3><p>Если у проекта есть следующий шаг, срок и ответственный, Павел видит их сразу. Подробности доступны по клику, а для задержек и решений предусмотрены отдельные действия.</p></div>')+
+ box('Пример уведомлений','Демо создаёт записи, но не отправляет email.','<div class="note">После вопроса Москва должна получить письмо; после ответа - Сергей. Руководитель увидит смену статуса без чтения цепочки переписки.</div>')+'</div></div>';
+}
+function questionCard(item){
+ let project=p(item.pid),status=item.status;
+ let body='<div class="qa"><div class="qa-head"><div class="qa-title">'+esc(item.title)+'</div>'+tag(status==='waiting'?overdue(item.due)?'Просрочен':'Ожидает ответа':status==='answered'?'Ответ получен':'Обработан',status==='waiting'?(overdue(item.due)?'red':'warn'):status==='answered'?'purple':'green')+'</div>'+
+ '<p>'+esc(item.details||'')+'</p><div class="qa-meta">'+esc(project?.client||'')+' · Контроль '+esc(date(item.due))+'</div>';
+ if(status==='waiting'&&role==='moscow')body+='<form class="form" data-form="reply" data-id="'+esc(item.id)+'">'+field('Ваш ответ *','answer','textarea','','Кратко: что известно, ограничения, следующий ориентир','required maxlength="2500"')+'<div class="hint">Ответ сохранится в истории, Сергей получит уведомление.</div><button class="btn primary" type="submit">Отправить ответ</button></form>';
+ if(status==='waiting'&&role==='manager')body+='<div class="buttons">'+btn('Напомнить Москве','remind','data-id="'+esc(item.id)+'"','small')+'</div>';
+ if(status==='answered'){body+='<div class="line"></div><div class="factlabel">Ответ Москвы</div><p>'+esc(item.answer)+'</p>';
+ if(role==='manager')body+='<form class="form" data-form="close" data-id="'+esc(item.id)+'">'+field('Следующее действие *','next','text','','Например: согласовать выезд','required maxlength="230"')+
+ '<div class="two-column">'+field('Дата контроля *','due','date',day(3),'','required')+'</div>'+
+ '<div class="hint">Закрываем ответ и фиксируем следующий шаг менеджера.</div><button class="btn primary" type="submit">Принять ответ и назначить контроль</button></form>';
+ }
+ if(role==='leader'&&status==='waiting')body+='<div class="buttons">'+btn('Напомнить Сергею о контроле','leader-remind','data-id="'+esc(item.id)+'"','small')+'</div>';
+ body+='</div>';return body;
+}
+function askForm(project){
+ return '<form class="form" data-form="ask" data-pid="'+esc(project.id)+'">'+field('Вопрос Москве *','title','textarea','','Что именно нужно уточнить?','required maxlength="500"')+
+ field('Пояснение','details','textarea','','Контекст, детали для коллег','maxlength="1400"')+field('Контрольная дата *','due','date',day(3),'','required')+
+ '<div class="hint">Москва увидит только этот вопрос, Павел - состояние проекта. Письмо пока останется в журнале.</div><div><button class="btn primary" type="submit">Направить вопрос</button></div></form>';
+}
+function updateForm(project){
+ let value=project.next||{};
+ return '<form class="form" data-form="update" data-pid="'+esc(project.id)+'">'+field('Что изменилось *','note','textarea','','Например: заказчик подтвердил встречу','required maxlength="1500"')+
+ field('Следующий шаг *','next','text',value.title||'','Что нужно проконтролировать','required maxlength="230"')+
+ '<div class="two-column">'+field('Когда проверить *','due','date',value.due||day(3),'','required')+
+ '<div class="field"><label>Чей мяч после обновления</label><select name="owner" style="width:100%;border:1px solid #dce2eb;border-radius:8px;padding:10px;background:white">'+
+ [['manager','Сергей'],['moscow','Москва'],['customer','Заказчик'],['leader','Павел']].map(a=>'<option value="'+a[0]+'" '+(value.owner===a[0]?'selected':'')+'>'+a[1]+'</option>').join('')+'</select></div></div>'+
+ '<div class="hint">Сохраняем историю и новую дату следующего контроля. Если срок изменился, в журнале останется предыдущий срок.</div><button type="submit" class="btn primary">Зафиксировать изменение</button></form>';
+}
+function decisionForm(project){
+ let a=project.approval;if(!a||a.status!=='pending')return '';
+ if(role==='leader')return '<div class="card soft"><div class="cardhead"><h3>'+esc(a.title)+'</h3>'+tag('Ждёт Павла','warn')+'</div><p>'+esc(a.request)+'</p>'+
+ '<form class="form" data-form="decision" data-pid="'+esc(project.id)+'">'+field('Комментарий к решению','note','textarea','','Например: согласовано при условии возврата комплекта','maxlength="1500"')+
+ '<div class="buttons"><button class="btn primary" type="submit" name="decision" value="approved">Согласовать</button><button class="btn" type="submit" name="decision" value="rejected">Отклонить</button></div></form></div>';
+ return '<div class="card soft"><h3>Ожидаем решение Павла</h3><p>'+esc(a.title)+'. '+esc(a.request)+'</p></div>';
+}
+function projectPage(){
+ let project=p(selected)||data.projects[0];selected=project.id;let s=info(project);
+ let qa=questions(project.id).slice().sort((a,b)=>b.created.localeCompare(a.created));
+ let left=box('Текущие вопросы','Все вопросы по проекту, ответы и контроль.',
+ qa.length?qa.map(questionCard).join(''):'<div class="panel empty">Технических вопросов пока нет.</div>')+
+ box('Хронология проекта','Запросы, ответы, решения и переносы сроков.',feed(project.id,25));
+ let right='';
+ if(project.approval?.status==='pending')right+=box('Согласование','Решение руководителя.',decisionForm(project));
+ if(role==='manager')right+=box('Обновить проект','Короткая запись о произошедшем и следующий контроль.','<div class="panel pad">'+updateForm(project)+'</div>')+
+ box('Задать вопрос Москве','Если нужен ответ технической стороны.','<div class="panel pad">'+askForm(project)+'</div>');
+ if(role==='leader')right+=box('Контроль руководителя','Без ввода лишней отчётности.',
+ '<div class="card"><h3>Ответственный за следующий шаг: '+esc(s.owner)+'</h3><p>'+esc(s.detail)+'</p><p>Контроль: '+esc(date(s.due))+'</p><div class="buttons">'+btn('Напомнить Сергею','leader-project-remind','data-pid="'+esc(project.id)+'"','small')+'</div></div>');
+ if(role==='moscow')right+=box('Достаточно ответить на вопросы','Участие Москвы ограничено предметными запросами.',
+ '<div class="note">Техническую разработку внутри этой системы не ведём. По проекту видны только вопросы и ответы, необходимые для движения заказчика.</div>');
+ return btn('← К списку проектов','back','','small')+'<div style="height:13px"></div>'+projectInfo(project)+
+ '<div class="two"><div>'+left+'</div><div>'+right+'</div></div>';
+}
+function manager(){
+ let toHandle=data.projects.filter(x=>info(x).category==='manager'||info(x).category==='customer'||info(x).category==='none');
+ let answeredCount=answering().length;let waits=data.projects.filter(x=>info(x).category==='moscow').length;
+ return '<div class="note">Взгляд Сергея: не нужно заполнять все проекты каждый день. Сначала - то, где надо позвонить, обработать ответ или назначить контроль. По каждому проекту можно записать результат одним действием.</div>'+
+ '<div class="stats">'+metric('Проекты',data.projects.length,'Клиентские направления')+metric('Мои следующие шаги',toHandle.length,'Включая ожидание клиента')+metric('Новые ответы',answeredCount,'Нужно обработать')+metric('Ждём Москву',waits,'Техническая сторона')+'</div>'+
+ '<div class="two"><div>'+box('Сейчас требуется моё действие','Здесь видно, что Сергей должен сделать дальше.',
+ (toHandle.length?toHandle.map(project=>{
+ let s=info(project);
+ return '<div class="compact-project"><div class="compact-top"><div><div class="compact-client">'+esc(project.client)+'</div><div class="compact-name">'+esc(project.name)+'</div></div>'+tag(s.label,s.tone)+'</div>'+
+ '<div class="compact-desc">'+esc(s.detail)+'</div><div class="compact-foot"><span>Мяч: '+esc(s.owner)+'</span><span>Контроль: '+esc(date(s.due))+'</span></div><div class="buttons">'+btn('Открыть и обновить','open','data-id="'+esc(project.id)+'"','small primary')+'</div></div>';
+ }).join(''):'<div class="panel empty">Активных действий пока нет.</div>'))+
+ box('Ожидаем ответов','Когда ответят, появится новое действие у Сергея.',
+ (data.projects.filter(x=>info(x).category==='moscow'||info(x).category==='leader').map(project=>'<div class="compact-project"><div class="compact-top"><div><div class="compact-client">'+esc(project.client)+'</div><div class="compact-name">'+esc(project.name)+'</div></div>'+tag(info(project).label,info(project).tone)+'</div><div class="compact-desc">'+esc(info(project).detail)+'</div><div class="buttons">'+btn('Открыть','open','data-id="'+esc(project.id)+'"','small')+'</div></div>').join('')||'<div class="panel empty">Ожиданий нет.</div>'))+
+ '</div><div>'+box('Все проекты','Состояние остальных проектов.',
+ data.projects.map(project=>'<div class="compact-project"><div class="compact-top"><div><div class="compact-client">'+esc(project.client)+'</div><div class="compact-name">'+esc(project.name)+'</div></div>'+tag(info(project).label,info(project).tone)+'</div><div class="buttons">'+btn('Открыть','open','data-id="'+esc(project.id)+'"','small')+'</div></div>').join(''))+
+ box('Последние события','История, не требующая ручного отчёта.',feed(null,5),btn('Вся история','page','data-page="history"','small'))+'</div></div>';
+}
+function moscow(){
+ let list=pending().slice().sort((a,b)=>a.due.localeCompare(b.due)),answered=data.questions.filter(x=>x.answer);
+ return '<div class="note">Взгляд Москвы: только адресованные технические вопросы. Разработку, тестовые стенды и внутренние задачи московской команды здесь не ведём.</div>'+
+ '<div class="stats">'+metric('Ответить',list.length,'Открытые вопросы')+metric('Просрочено',list.filter(x=>overdue(x.due)).length,'Просроченные ответы')+metric('Ответил ранее',answered.length,'История ответов')+metric('Проектов с вопросами',new Set(list.map(q=>q.pid)).size,'Только нужные обращения')+'</div>'+
+ '<div class="two"><div>'+box('Мои запросы','Прочитать, ответить и отправить. Ничего лишнего.',
+ list.length?list.map(questionCard).join(''):'<div class="panel empty">Новых запросов нет. От вас ничего не требуется.</div>')+
+ '</div><div>'+box('Ранее отвечал','Система сама сохраняет ваши ответы.',
+ answered.length?answered.slice().reverse().map(questionCard).join(''):'<div class="panel empty">Ответов ещё нет.</div>')+
+ box('Правило для Москвы','Достаточно краткого результата.',
+ '<div class="note">После отправки ответа вопрос исчезнет из списка открытых. Сергей увидит ответ и назначит дальнейшие действия, а Павел - обновлённое состояние проекта.</div>')+'</div></div>';
+}
+function history(){
+ return box('История семи проектов','Запросы, ответы, изменения, решения и напоминания.',
+ '<div class="screen-actions" style="margin-bottom:13px">'+btn('К общей картине','page','data-page="main"','small')+'</div>'+feed(null,150));
+}
+function mailbox(){
+ return '<div class="note">Ни одного письма не отправлено. Здесь отображаются уведомления, которые рабочая система должна будет отправлять. Для этого потребуется почтовый сервис и правила повторных напоминаний.</div>'+
+ box('Журнал будущих уведомлений','Письма формируются при отправке вопроса, ответе, согласовании и напоминании.',
+ '<div class="panel">'+data.mails.slice().reverse().map(m=>'<div class="mail"><div class="mailhead"><strong>'+esc(m.subject)+'</strong>'+tag('Не отправлено','warn')+'</div><p>'+esc(m.body)+'</p><small>Кому: '+esc(m.to)+' · Проект: '+esc(p(m.pid)?.client||'')+' · '+esc(dt(m.at))+' · '+esc(m.kind)+'</small></div>').join('')+'</div>');
+}
+function settings(){
+ return '<div class="card"><h3>Как показывать Павлу</h3><p>1. На вкладке «Обзор» посмотри все семь проектов. 2. Выбери фильтр «Павел» и согласуй условия пилота. 3. Переключись на «Москва» и ответь на один из вопросов. 4. Переключись на «Сергей» и обработай ответ. 5. Вернись на «Павел»: состояние изменится для всех.</p></div>'+
+ '<div class="card"><h3>Технические границы</h3><p>Роли переключаются без авторизации. Это единый локальный сценарий, не серверное приложение. Сведения и заказчики вымышленные. Email не отправляется, все изменения сохраняются только в браузере. В будущем нужны серверная база, авторизация, разграничение доступа и почтовые напоминания.</p></div>'+
+ '<div class="card"><h3>Демонстрационные данные v3.3</h3><p>v3.3 независима от v3.2 и других версий. Можно сбросить демонстрацию для Павла, экспортировать или импортировать данные в JSON.</p><div class="buttons">'+btn('Экспорт JSON','export','','small')+btn('Импорт JSON','import','','small')+btn('Вернуть исходные 7 проектов','reset','','small warn')+'</div></div><input id="import-file" type="file" accept=".json,application/json" hidden>';
+}
+function render(){
+ let nav=[['main','◫','Обзор'],['history','◷','История'],['mail','✉','Письма'],['settings','⚙','Настройки']];
+ document.getElementById('roles').innerHTML=Object.keys(ROLES).map(r=>'<button class="role '+(role===r?'active':'')+'" type="button" data-action="role" data-role="'+r+'" aria-pressed="'+(role===r?'true':'false')+'"><b>'+ROLES[r]+'</b><small>'+({leader:'Руководитель',manager:'Менеджер',moscow:'Исполнитель'}[r])+'</small></button>').join('');
+ document.getElementById('nav').innerHTML=nav.map(n=>'<button type="button" class="'+(page===n[0]?'active':'')+'" data-action="page" data-page="'+n[0]+'"><span class="navicon">'+n[1]+'</span>'+n[2]+'</button>').join('');
+ let titles={leader:['Общий контроль','Семь проектов, разные зоны ответственности. Где проблемы и что делать?'],manager:['Мои проекты','Мои действия, ответы на вопросы и следующие сроки контроля.'],moscow:['Мои запросы','Только нужные от меня ответы по проектам.']};
+ let h=page==='main'?titles[role]:page==='project'?[p(selected)?.name||'Проект','Подробности, история и действия для выбранной роли.']:{history:['История','Все изменения по семи проектам.'],mail:['Письма','Демонстрационные уведомления без реальной отправки.'],settings:['Настройки','Как проверить сценарии и сбросить данные.']}[page];
+ document.getElementById('heading').textContent=h[0];document.getElementById('subtitle').textContent=h[1];
+ document.getElementById('crumb').textContent=ROLES[role]+' / '+(page==='project'?p(selected)?.client||'Проект':page==='main'?'Обзор':nav.find(n=>n[0]===page)?.[2]||page);
+ document.getElementById('body').innerHTML=page==='main'?(role==='leader'?leader():role==='manager'?manager():moscow()):page==='project'?projectPage():page==='history'?history():page==='mail'?mailbox():settings();
+}
+function ask(f){
+ if(role!=='manager')return;let project=p(f.dataset.pid),title=get(f,'title'),due=get(f,'due'),details=get(f,'details');
+ if(!project||!title||!due)return toast('Укажи вопрос и дату контроля.');
+ let ok=tx(()=>{
+  let item={id:id('q'),pid:project.id,title,details,due,status:'waiting',answer:'',created:now(),answered:'',closed:''};
+  data.questions.push(item);project.next={title,owner:'moscow',due};
+  rec(project.id,'Сергей','Вопрос направлен Москве',title+'\nКонтроль: '+date(due));
+  mail(project.id,'Москва','Новый вопрос: '+project.client,title+(details?'\n'+details:'')+'\nОтвет до '+date(due),'Запрос');
+ });if(ok){render();toast('Вопрос добавлен. У Москвы появился новый запрос.')}
+}
+function reply(f){
+ if(role!=='moscow')return;let item=q(f.dataset.id),text=get(f,'answer');
+ if(!item||item.status!=='waiting'||!text)return toast('Нужен ответ на открытый вопрос.');
+ let ok=tx(()=>{
+  item.answer=text;item.answered=now();item.status='answered';
+  rec(item.pid,'Москва','Получен технический ответ',item.title+'\n'+text);
+  mail(item.pid,'Сергей','Ответ по '+p(item.pid).client,item.title+'\n'+text,'Ответ');
+ });if(ok){render();toast('Ответ сохранён. Сергей увидит задачу на обработку.')}
+}
+function close(f){
+ if(role!=='manager')return;let item=q(f.dataset.id),next=get(f,'next'),due=get(f,'due');
+ if(!item||item.status!=='answered'||!next||!due)return toast('Нужно указать следующий шаг и дату.');
+ let ok=tx(()=>{
+  item.status='closed';item.closed=now();p(item.pid).next={title:next,owner:'manager',due};
+  rec(item.pid,'Сергей','Ответ обработан, следующий контроль назначен',item.title+'\nСледующий шаг: '+next+'\nСрок: '+date(due));
+  mail(item.pid,'Павел','Проект обновлён: '+p(item.pid).client,'Следующий шаг: '+next+'\nКонтроль: '+date(due),'Результат');
+ });if(ok){render();toast('Ответ обработан. Павел увидит следующий шаг.')}
+}
+function update(f){
+ if(role!=='manager')return;let project=p(f.dataset.pid),note=get(f,'note'),next=get(f,'next'),due=get(f,'due'),newOwner=get(f,'owner');
+ if(!project||!note||!next||!due||!['manager','moscow','customer','leader'].includes(newOwner))return toast('Заполни факт, следующий шаг и контроль.');
+ let old=project.next;let ok=tx(()=>{
+  project.next={title:next,owner:newOwner,due};
+  rec(project.id,'Сергей','Обновлено состояние проекта',note+'\nБыло: '+(old.title||'не определено')+'; срок: '+date(old.due)+'\nСледующее действие: '+next+'; чей мяч: '+owner(newOwner)+'; срок: '+date(due));
+  mail(project.id,'Павел','Обновление проекта: '+project.client,note+'\nСледующее действие: '+next+'\nКонтроль: '+date(due),'Обновление');
+ });if(ok){render();toast('Состояние и история обновлены.')}
+}
+function approve(f,eventDecision){
+ if(role!=='leader')return;let project=p(f.dataset.pid),note=get(f,'note'),decision=eventDecision;
+ if(!project||!project.approval||project.approval.status!=='pending'||!['approved','rejected'].includes(decision))return;
+ if(decision==='rejected'&&!note)return toast('Укажи причину отказа.');
+ let ok=tx(()=>{
+  project.approval.status=decision;project.approval.note=note;
+  project.next={title:decision==='approved'?'Подтвердить согласованные условия заказчику':'Пересмотреть условия и представить на новое согласование',owner:'manager',due:day(3)};
+  project.blocker=decision==='approved'?'Ожидаем реакцию заказчика на согласованные условия.':'Условия требуют переработки.';
+  rec(project.id,'Павел',decision==='approved'?'Пилот согласован':'Пилот не согласован',note||'Решение принято без дополнительного комментария');
+  mail(project.id,'Сергей','Решение Павла: '+project.client,(decision==='approved'?'Согласовано. ':'Отклонено. ')+(note||'')+'\nСледующий шаг: '+project.next.title,'Решение');
+ });if(ok){render();toast('Решение сохранено. Сергей получил следующую задачу.')}
+}
+function remind(itemId,byLeader){
+ let item=q(itemId);if(!item)return;
+ let to=byLeader?'Сергей':'Москва',source=byLeader?'Павел':'Сергей',project=p(item.pid);
+ let ok=tx(()=>{rec(item.pid,source,'Сформировано напоминание для '+to,item.title);mail(item.pid,to,'Напоминание: '+project.client,item.title+'\nКонтроль: '+date(item.due),'Напоминание')});
+ if(ok){render();toast('Напоминание записано в журнал. Email не отправлен.')}
+}
+function remindProject(pid){
+ let project=p(pid);if(!project)return;
+ let ok=tx(()=>{rec(pid,'Павел','Запрошено уточнение у Сергея',project.next.title||'Нет следующего контроля');mail(pid,'Сергей','Уточнить состояние проекта '+project.client,project.next.title||'Назначить следующее действие и контрольную дату','Напоминание')});
+ if(ok){render();toast('Запрос руководителя записан в журнал.')}
+}
+function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='hatanga-v33-'+day()+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),300)}
+document.addEventListener('click',e=>{
+ let b=e.target.closest('[data-action]');if(!b)return;
+ let act=b.dataset.action;
+ if(act==='page'){navigate(b.dataset.page);return}
+ if(act==='open'){projectSelected(b.dataset.id);return}
+ if(act==='back'){navigate('main');return}
+ if(act==='role'){setRole(b.dataset.role);return}
+ if(act==='filter'){filter=b.dataset.value;render();return}
+ if(act==='remind'&&role==='manager'){remind(b.dataset.id,false);return}
+ if(act==='leader-remind'&&role==='leader'){remind(b.dataset.id,true);return}
+ if(act==='leader-project-remind'&&role==='leader'){remindProject(b.dataset.pid);return}
+ if(act==='export'){exportData();return}
+ if(act==='import'){document.getElementById('import-file').click();return}
+ if(act==='reset'){if(!confirm('Восстановить семь исходных демопроектов? Все локальные изменения v3.3 будут потеряны.'))return;data=seed();save();selected='p1';setRole('leader');toast('Демонстрация сброшена.');return}
+});
+document.addEventListener('submit',e=>{
+ let f=e.target;if(!f.dataset||!f.dataset.form)return;e.preventDefault();
+ if(f.dataset.form==='ask')ask(f);
+ if(f.dataset.form==='reply')reply(f);
+ if(f.dataset.form==='close')close(f);
+ if(f.dataset.form==='update')update(f);
+ if(f.dataset.form==='decision')approve(f,e.submitter?.value||'');
+});
+document.addEventListener('change',e=>{
+ if(e.target.id!=='import-file')return;let file=e.target.files?.[0];if(!file)return;let reader=new FileReader();
+ reader.onload=()=>{try{let incoming=JSON.parse(reader.result);if(!valid(incoming))throw Error('Неподходящий файл v3.3');if(!confirm('Заменить текущие данные v3.3 содержимым файла?'))return;let prior=data;data=incoming;if(!save()){data=prior;return}render();toast('Импорт завершён')}catch(error){alert('Ошибка импорта: '+error.message)}finally{e.target.value=''}};
+ reader.readAsText(file);
+});
+render();
+})();
+</script></body></html>
